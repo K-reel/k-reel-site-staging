@@ -1,0 +1,75 @@
+---
+---
+
+@import 'main
+  {{ '/assets/css/jekyll-theme-chirpy.css' | relative_url }}
+';
+
+/* --- KB custom: blue sidebar + hover indicator (no OPSEC metadata) --- */
+:root {
+  --kb-sidebar-bg: #1e40af;          /* blue */
+  --kb-sidebar-fg: rgba(255,255,255,.92);
+  --kb-sidebar-fg-muted: rgba(255,255,255,.72);
+  --kb-sidebar-indicator: rgba(255,255,255,.95);
+}
+
+/* Sidebar background + text/icon contrast */
+#sidebar {
+  background: var(--kb-sidebar-bg) !important;
+  border-right: none !important;
+}
+
+#sidebar a,
+#sidebar .site-title,
+#sidebar .site-subtitle,
+#sidebar .nav-link,
+#sidebar .nav-link i {
+  color: var(--kb-sidebar-fg) !important;
+}
+
+#sidebar .site-subtitle,
+#sidebar .sidebar-bottom a,
+#sidebar .sidebar-bottom i {
+  color: var(--kb-sidebar-fg-muted) !important;
+}
+
+/* Keep hover crisp */
+#sidebar .nav-link:hover,
+#sidebar .nav-link:hover i {
+  color: #ffffff !important;
+}
+
+/* "Line follows cursor" indicator on hover/active */
+#sidebar .nav-item .nav-link {
+  position: relative;
+}
+
+#sidebar .nav-item .nav-link::before {
+  content: "";
+  position: absolute;
+  left: -0.9rem;              /* slight outside-left */
+  top: 50%;
+  width: 3px;
+  height: 60%;
+  background: var(--kb-sidebar-indicator);
+  border-radius: 2px;
+  transform: translateY(-50%) scaleY(0);
+  transform-origin: center;
+  opacity: 0;
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+
+#sidebar .nav-item .nav-link:hover::before,
+#sidebar .nav-item.active .nav-link::before,
+#sidebar .nav-item .nav-link[aria-current="page"]::before {
+  transform: translateY(-50%) scaleY(1);
+  opacity: 1;
+}
+
+/* Optional: make active item slightly brighter */
+#sidebar .nav-item.active .nav-link,
+#sidebar .nav-item .nav-link[aria-current="page"] {
+  color: #ffffff !important;
+}
+
+/* --- end KB custom --- */
