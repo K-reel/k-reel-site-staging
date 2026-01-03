@@ -1,0 +1,110 @@
+---
+layout: compress
+---
+
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/jekyll-theme-chirpy.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/landing.css' | relative_url }}">
+</head>
+<body>
+  <div class="landing-container">
+    <!-- Top Navigation -->
+    <nav class="landing-nav">
+      <div class="nav-inner">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#bio" class="nav-link">Bio</a>
+        <a href="#focus" class="nav-link">Focus</a>
+        <a href="#writing" class="nav-link">Writing</a>
+        <a href="{{ '/archives' | relative_url }}" class="nav-link">Archives</a>
+        <a href="{{ '/tags' | relative_url }}" class="nav-link">Tags</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <h1>Kirill Boychenko</h1>
+      <p class="tagline">Supply chain security and threat research</p>
+      <div class="cta-buttons">
+        <a href="{{ '/archives' | relative_url }}" class="btn-primary">Archives</a>
+        <a href="{{ '/tags' | relative_url }}" class="btn-secondary">Tags</a>
+        <a href="https://github.com/K-reel" target="_blank" class="btn-secondary">GitHub</a>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="landing-main">
+      <!-- Left Column: Content Sections -->
+      <div class="content-col">
+        <!-- Bio Section -->
+        <section id="bio" class="content-section">
+          <h2>Bio</h2>
+          <p>
+            Security researcher focused on software supply chain security, threat intelligence,
+            and detection engineering. I build tools and write about malicious packages,
+            dependency attacks, and threat actor techniques.
+          </p>
+          <p>
+            My work involves analyzing malware, developing detection rules, and creating
+            reproducible security research workflows.
+          </p>
+        </section>
+
+        <!-- Focus Areas Section -->
+        <section id="focus" class="content-section">
+          <h2>Focus Areas</h2>
+          <div class="focus-chips">
+            <a href="{{ '/categories/supply-chain-security' | relative_url }}" class="chip">Supply Chain Security</a>
+            <a href="{{ '/categories/threat-intelligence' | relative_url }}" class="chip">Threat Intelligence</a>
+            <a href="{{ '/categories/detection-engineering' | relative_url }}" class="chip">Detection Engineering</a>
+            <a href="{{ '/categories/tool-development' | relative_url }}" class="chip">Tool Development</a>
+          </div>
+        </section>
+
+        <!-- Latest Posts Section -->
+        <section id="writing" class="content-section">
+          <h2>Latest Writing</h2>
+          {% if site.posts.size > 0 %}
+          <ul class="post-list">
+            {% for post in site.posts limit:5 %}
+            <li class="post-item">
+              <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p class="no-posts">No posts yet. Check back soon!</p>
+          {% endif %}
+          <p class="view-all">
+            <a href="{{ '/archives' | relative_url }}">View all posts →</a>
+          </p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+          <h2>Connect</h2>
+          <div class="contact-links">
+            <a href="https://github.com/K-reel" target="_blank" class="contact-link">GitHub</a>
+            <a href="https://www.linkedin.com/in/kirill-boychenko" target="_blank" class="contact-link">LinkedIn</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: Topics Widget -->
+      <aside class="sidebar-col">
+        {% include topics.html %}
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.social.name | default: site.title }}</p>
+    </footer>
+  </div>
+</body>
+</html>
