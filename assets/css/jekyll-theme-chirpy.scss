@@ -1,11 +1,7 @@
 ---
 ---
 
-@use 'main
-{%- if jekyll.environment == 'production' -%}
-  .bundle
-{%- endif -%}
-';
+@import "main";
 
 /* --- KB custom: blue sidebar + hover indicator (no OPSEC metadata) --- */
 :root {
