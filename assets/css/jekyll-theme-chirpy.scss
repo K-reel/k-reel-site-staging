@@ -1,9 +1,7 @@
 ---
 ---
 
-@import 'main
-  {{ '/assets/css/jekyll-theme-chirpy.css' | relative_url }}
-';
+@import "main";
 
 /* --- KB custom: blue sidebar + hover indicator (no OPSEC metadata) --- */
 :root {
