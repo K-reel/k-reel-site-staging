@@ -1,11 +1,15 @@
-{% if site.tags.size > 0 %}
 <div id="access-tags">
   <div class="panel-heading">Topics</div>
+  {% if site.tags.size > 0 %}
   <div class="d-flex flex-wrap mt-3 mb-1 mr-3">
     {% assign sorted_tags = site.tags | sort %}
     {% for tag in sorted_tags limit: 40 %}
       <a class="post-tag btn btn-outline-primary" href="{{ '/tags/' | append: tag[0] | downcase | replace: ' ', '-' | relative_url }}">{{ tag[0] }}</a>
     {% endfor %}
   </div>
+  {% else %}
+  <div class="mt-3 mb-1 mr-3 text-muted">
+    <small>Topics will appear here as content is published.</small>
+  </div>
+  {% endif %}
 </div>
-{% endif %}
