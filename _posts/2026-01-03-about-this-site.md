@@ -33,4 +33,4 @@ Analysis combines automated scanning with manual investigation. Tools are develo
 
 ## Content Organization
 
-Posts are organized by [categories](/categories/) and [tags](/tags/) for easy navigation. The [archives](/archives/) provide a chronological view of all published research.
+Posts are organized by [categories]({{ '/categories/' | relative_url }}) and [tags]({{ '/tags/' | relative_url }}) for easy navigation. The [archives]({{ '/archives/' | relative_url }}) provide a chronological view of all published research.

@@ -26,4 +26,4 @@ This site documents research on malicious packages, dependency attacks, and thre
 
 ## Getting Started
 
-Browse by [topic](/tags/) to find content relevant to your interests, or check the [archives](/archives/) for all posts chronologically.
+Browse by [topic]({{ '/tags/' | relative_url }}) to find content relevant to your interests, or check the [archives]({{ '/archives/' | relative_url }}) for all posts chronologically.
