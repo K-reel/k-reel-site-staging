@@ -148,7 +148,7 @@ paginate: 10
 baseurl: "/k-reel-site-staging"
 
 # Build version marker (for cache busting during iteration)
-kb_build_id: "20260103-01"
+kb_build_id: "20260104-01"
 
 # ------------ The following options are not recommended to be modified ------------------
 
