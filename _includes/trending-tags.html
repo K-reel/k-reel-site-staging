@@ -1,0 +1,17 @@
+{% assign MAX = 30 %}
+<section class="panel-wrapper">
+  <div class="panel-heading">Topics</div>
+  <div class="panel-body">
+    {% if site.tags.size > 0 %}
+      <div class="d-flex flex-wrap mt-1 mb-1">
+        {% assign tag_names = site.tags | map: "first" | sort %}
+        {% for name in tag_names limit: MAX %}
+          {% assign slug = name | slugify %}
+          <a class="post-tag" href="{{ '/tags/' | append: slug | append: '/' | relative_url }}">{{ name }}</a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted mb-0">Topics will appear once posts are published.</p>
+    {% endif %}
+  </div>
+</section>
