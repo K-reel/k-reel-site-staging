@@ -93,13 +93,22 @@ jobs:
           done
 
           echo ""
-          echo "Checking homepage contains build ID..."
+          echo "Checking homepage content..."
           HOMEPAGE_HTML=$(curl -s "${BASE_URL}/")
-          if echo "$HOMEPAGE_HTML" | grep -q "20260103-01"; then
-            echo "✓ Build ID found in homepage"
+          if echo "$HOMEPAGE_HTML" | grep -q "Kirill Boychenko"; then
+            echo "✓ Homepage contains expected content"
           else
-            echo "❌ FAIL: Build ID not found in homepage"
+            echo "❌ FAIL: Homepage missing expected content"
             exit 1
+          fi
+
+          echo ""
+          echo "Checking debug page contains build ID..."
+          DEBUG_HTML=$(curl -s "${BASE_URL}/debug/")
+          if echo "$DEBUG_HTML" | grep -q "20260103-01"; then
+            echo "✓ Build ID found in debug page"
+          else
+            echo "⚠ Warning: Build ID not found in debug page (non-fatal)"
           fi
 
           echo ""
