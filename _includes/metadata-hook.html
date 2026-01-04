@@ -1,0 +1,12 @@
+<script>
+  (function() {
+    const modeKey = 'mode';
+    const lightMode = 'light';
+
+    // Only set default if user has no preference stored
+    if (!localStorage.getItem(modeKey)) {
+      localStorage.setItem(modeKey, lightMode);
+      document.documentElement.setAttribute('data-mode', lightMode);
+    }
+  })();
+</script>
