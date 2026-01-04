@@ -3,9 +3,14 @@
     const modeKey = 'mode';
     const lightMode = 'light';
 
-    // Only set default if user has no preference stored
-    if (!localStorage.getItem(modeKey)) {
-      localStorage.setItem(modeKey, lightMode);
+    try {
+      // Only set default if user has no preference stored
+      if (!localStorage.getItem(modeKey)) {
+        localStorage.setItem(modeKey, lightMode);
+        document.documentElement.setAttribute('data-mode', lightMode);
+      }
+    } catch (e) {
+      // If storage is unavailable, fall back to light via attribute only
       document.documentElement.setAttribute('data-mode', lightMode);
     }
   })();
