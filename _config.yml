@@ -133,9 +133,9 @@ assets:
     env: # [development | production]
 
 pwa:
-  enabled: true # The option for PWA feature (installable)
+  enabled: false # The option for PWA feature (installable)
   cache:
-    enabled: true # The option for PWA offline cache
+    enabled: false # The option for PWA offline cache
     # Paths defined here will be excluded from the PWA cache.
     # Usually its value is the `baseurl` of another website that
     # shares the same domain name as the current website.
@@ -146,6 +146,9 @@ paginate: 10
 
 # The base URL of your site
 baseurl: "/k-reel-site-staging"
+
+# Build version marker (for cache busting during iteration)
+kb_build_id: "20260103-01"
 
 # ------------ The following options are not recommended to be modified ------------------
 
