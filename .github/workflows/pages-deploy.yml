@@ -71,3 +71,36 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify deployment
+        run: |
+          echo "Waiting for deployment to propagate..."
+          sleep 30
+
+          BASE_URL="https://k-reel.github.io/k-reel-site-staging"
+          PAGES=("" "/tags/" "/categories/" "/archives/" "/debug/")
+
+          echo "Checking all pages return HTTP 200..."
+          for PAGE in "${PAGES[@]}"; do
+            URL="${BASE_URL}${PAGE}"
+            echo "Checking: $URL"
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+            if [ "$STATUS" != "200" ]; then
+              echo "❌ FAIL: $URL returned HTTP $STATUS"
+              exit 1
+            fi
+            echo "✓ $URL returned HTTP 200"
+          done
+
+          echo ""
+          echo "Checking homepage contains build ID..."
+          HOMEPAGE_HTML=$(curl -s "${BASE_URL}/")
+          if echo "$HOMEPAGE_HTML" | grep -q "20260103-01"; then
+            echo "✓ Build ID found in homepage"
+          else
+            echo "❌ FAIL: Build ID not found in homepage"
+            exit 1
+          fi
+
+          echo ""
+          echo "✓ All deployment checks passed"
